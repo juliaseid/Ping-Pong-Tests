@@ -1,42 +1,43 @@
 using System;
 using System.Collections.Generic;
 
-class PingPong
+namespace PingPongGame 
 {
 
-
-  static void Main()
-  {
-    List<int> numberList = new List<int>();
-    List<string> parsedList = new List<string>();
-    Console.WriteLine("Enter a number!");
-    int startNumber = int.Parse(Console.ReadLine());
-    for (int index = 0; index <= startNumber; index++)
+  public class PingPong
+  {  
+    public List<int> numberList = new List<int>();
+    public List<string> parsedList = new List<string>();
+    
+    public void Translate(int startNumber)
     {
-      numberList.Add(index);
-    }
-    foreach (int number in numberList)
-    {
-      if ((number % 3) == 0 && (number % 5) == 0)
+      for (int index = 0; index <= startNumber; index++)
       {
-        parsedList.Add("ping-pong");
+        numberList.Add(index);
       }
-      else if ((number % 3) == 0)
+      foreach (int number in numberList)
       {
-        parsedList.Add("ping");
+        if ((number % 3) == 0 && (number % 5) == 0)
+        {
+          parsedList.Add("ping-pong");
+        }
+        else if ((number % 3) == 0)
+        {
+          parsedList.Add("ping");
+        }
+        else if ((number % 5 == 0))
+        {
+          parsedList.Add("pong");
+        }
+        else
+        {
+          parsedList.Add(number.ToString());
+        }
       }
-      else if ((number % 5 == 0))
+      foreach (string parsed in parsedList)
       {
-        parsedList.Add("pong");
+        Console.WriteLine(parsed);
       }
-      else
-      {
-        parsedList.Add(number.ToString());
-      }
-    }
-    foreach (string parsed in parsedList)
-    {
-      Console.WriteLine(parsed);
     }
   }
 }
